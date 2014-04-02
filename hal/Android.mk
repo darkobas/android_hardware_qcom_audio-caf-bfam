@@ -122,6 +122,14 @@ ifneq ($(strip $(DOLBY_DDP)),true)
 endif
 endif
 
+ifeq ($(AUDIO_FEATURE_LOW_LATENCY_PRIMARY),true)
+    LOCAL_CFLAGS += -DLOW_LATENCY_PRIMARY
+endif
+
+ifeq ($(strip $(AUDIO_FEATURE_ENABLED_MULTIPLE_TUNNEL)), true)
+    LOCAL_CFLAGS += -DMULTIPLE_OFFLOAD_ENABLED
+endif
+
 LOCAL_SHARED_LIBRARIES := \
 	liblog \
 	libcutils \
